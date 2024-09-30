@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=viewport
+        content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=0,viewport-fit=cover">
+    <title>lottery</title>
+    <link rel=icon type=image/ico href=static/img/favicon16x16.ico>
+    <link rel=icon type=image/icon href=static/img/favicon32x32.ico>
+    <style>
+        #preGameLoading {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: translate3d(-50%, -50%, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate3d(-50%, -50%, 0) rotate(360deg);
+            }
+        }
+
+        #loadingIcon {
+            animation: 0.8s linear infinite spinner;
+            animation-play-state: inherit;
+            border: solid 4px gray;
+            opacity: 0.8;
+            border-top-color: white;
+            border-radius: 50%;
+            content: "";
+            height: 75px;
+            width: 75px;
+            position: relative;
+            transform: translate3d(-50%, -50%, 0);
+            will-change: transform;
+            left: 50%;
+            top: 50%;
+        }
+
+        #loadingText {
+            position: relative;
+            top: 50%;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+    <div id=preGameLoading>
+        <div id=loadingIcon></div>
+        <div id=loadingText>LOADING...</div>
+    </div>
+    <div id=app></div>
+    <script>window.resizeTo(480, 853); // resize the new window
+        window.focus();
+        window.onload = function () {
+        };
+        window.referrerURL = document.referrer;
+
+        setTimeout(() => {
+            if (!window.preGameLoadingIsFinished) {
+                window.preGameLoadingTextInterval = setInterval(() => {
+                    loader();
+                }, 200);
+            }
+        }, 5000);
+
+        let loadingNumber = 0;
+
+        function loader() {
+            loadingNumber = add(loadingNumber, 0.1);
+
+            document.getElementById("loadingText").textContent = "LOADING... " + loadingNumber + "%";
+
+            if (loadingNumber === 100) {
+                clearInterval(window.preGameLoadingTextInterval);
+                return true;
+            }
+        }
+        function add(arg1, arg2) {
+            let r1, r2, m;
+            try {
+                r1 = arg1.toString().split(".")[1].length;
+            } catch (e) {
+                r1 = 0;
+            }
+            try {
+                r2 = arg2.toString().split(".")[1].length;
+            } catch (e) {
+                r2 = 0;
+            }
+            m = Math.pow(10, Math.max(r1, r2));
+            return (mul(arg1, m) + mul(arg2, m)) / m;
+        }
+
+        function mul(arg1, arg2) {
+            let m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+            try {
+                m += s1.split(".")[1].length;
+            } catch (e) {
+            }
+            try {
+                m += s2.split(".")[1].length;
+            } catch (e) {
+            }
+            return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+        }</script>
+    <script src="lottery-config.js?t=1727677694"></script>
+    <script src=static/js/ga.js></script>
+    <script src="index.js?t=1727677694"></script>
+    <script src=static/js/TweenMax.min.js></script>
+    <link href=./static/css/app.05faa93331a611772786b11aa8442549.css rel=stylesheet>
+    <script type=text/javascript src=./static/js/manifest.bbce6b55dc434eb7f21d.js></script>
+    <script type=text/javascript src=./static/js/vendor.f16f961e543a50f084b4.js></script>
+    <script type=text/javascript src=./static/js/app.0ba84c1ebd0d71a7f219.js></script>
+</body>
+
+</html>
