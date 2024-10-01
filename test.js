@@ -4,7 +4,7 @@
 //every sub thread have data input :
 
 
-let data = {
+let objThread = {
     acountStart, //index of account, chia theo sub
     accountEnd,
     numberStart: {

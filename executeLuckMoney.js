@@ -3,6 +3,7 @@ const chalk = require("chalk")
 
 
 
+
 class RunLuckyMoney {
     constructor({ start, end }) {
         this.services = new Services()
