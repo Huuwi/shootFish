@@ -26,7 +26,7 @@ const executeLuckyMoney = async (usernames, passWords, quantityOfThreadLuckyMone
     let i = 0
     let sliceArr = []
     while (true) {
-        if (i >= usernames.length - subSize) {
+        if (i >= usernames.length - subSize || sliceArr.length == quantityOfThreadLuckyMoney - 1) {
             sliceArr.push({
                 start: i,
                 end: usernames.length

@@ -67,7 +67,6 @@ class RunLottering {
                             console.log(chalk.bgGreenBright("username : ", username, "vào số : ", curNumber, " số tiền là : ", bl, " số tiền còn lại là : ", balance));
                             curNumber++
                             indexAccount++
-                            break;
                         }
                     } else {
                         if (balance < moneyNeed) {
@@ -79,7 +78,6 @@ class RunLottering {
                                 balance = Math.floor(pay.balance)
                                 console.log(chalk.bgGreenBright("username : ", username, "vào số : ", curNumber, " số tiền là : ", bl, " số tiền còn lại là : ", balance));
                                 indexAccount++
-                                break;
                             }
                         }
                     }
@@ -145,7 +143,7 @@ function handleData(data, quantityOfThreadLottering) {
     let i = 0
     let sliceArr = []
     while (true) {
-        if (i >= data.length - subSize) {
+        if (i >= data.length - subSize || sliceArr.length == quantityOfThreadLottering - 1) {
             sliceArr.push({
                 start: i,
                 end: data.length
@@ -207,6 +205,8 @@ async function executeLottering(v, data0, quantityOfThreadLottering) {
 
     let process = sliceArr.map((e) => {
         let run = new RunLottering(e, data)
+        console.log(run);
+
         return run.runLottering(v);
     })
 

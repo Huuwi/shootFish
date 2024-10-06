@@ -14,9 +14,9 @@ let data = fs.readFileSync("./lixi.txt", "utf-8").split("\n")
 
 
 //run luckymoney
-let quantityOfThreadLuckyMoney = 10
+let quantityOfThreadLuckyMoney = 15
 let quantityOfThreadLottering = 5
 // executeLuckyMoney(usernames, passWords, quantityOfThreadLuckyMoney)
-executeLottering(v = "04e82044a8db56038eabca9b6a42f776", data, quantityOfThreadLottering)
+// executeLottering(v = "04e82044a8db56038eabca9b6a42f776", data, quantityOfThreadLottering)
 // let services = new Services()
 // services.getInforToPayment("tuyenbuooii")
